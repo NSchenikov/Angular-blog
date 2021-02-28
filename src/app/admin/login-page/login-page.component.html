@@ -3,18 +3,18 @@
 
   <div
     class="form-control"
-    [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+    [ngClass]="{invalid: form.get('email')?.touched && form.get('email')?.invalid}"
   >
     <label for="email">Email:</label>
     <input id="email" type="email" formControlName="email">
     <div
-      *ngIf="form.get('email').touched && form.get('email').invalid"
+      *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
       class="validation"
     >
-      <small *ngIf="form.get('email').errors.required">
+      <small *ngIf="form.get('email').errors?.required">
         Type email
       </small>
-      <small *ngIf="form.get('email').errors.email">
+      <small *ngIf="form.get('email').errors?.email">
         Type correct email
       </small>
     </div>
@@ -22,21 +22,21 @@
 
   <div
     class="form-control"
-    [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+    [ngClass]="{invalid: form.get('password')?.touched && form.get('password')?.invalid}"
   >
     <label for="password">Password:</label>
     <input id="password" type="password" formControlName="password">
     <div
       class="validation"
-      *ngIf="form.get('password').touched && form.get('password').invalid"
+      *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
     >
-      <small *ngIf="form.get('password').errors.required">
+      <small *ngIf="form.get('password').errors?.required">
         Type password
       </small>
-      <small *ngIf="form.get('password').errors.minlength">
+      <small *ngIf="form.get('password').errors?.minlength">
         Password should have
-        {{form.get('password').errors.minlength.requiredLength}} symbols at least. Now is
-        {{form.get('password').errors.minlength.actualLength}}
+        {{form.get('password').errors?.minlength.requiredLength}} symbols at least. Now is
+        {{form.get('password').errors?.minlength.actualLength}}
       </small>
     </div>
   </div>

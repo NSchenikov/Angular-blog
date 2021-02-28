@@ -20,11 +20,11 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      email: new FormControl(null, [
+      email: new FormControl("", [
         Validators.required,
         Validators.email
       ]),
-      password: new FormControl(null, [
+      password: new FormControl("", [
         Validators.required,
         Validators.minLength(6)
       ])
