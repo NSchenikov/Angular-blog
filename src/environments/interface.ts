@@ -3,6 +3,3 @@ export interface Environment {
   production: boolean
 }
 
-export interface FbAuthResponse {
-  idToken: string
-}
