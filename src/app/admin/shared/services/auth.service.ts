@@ -15,7 +15,7 @@ export class AuthService {
   }
 
   login(user: User): Observable<any> {
-   return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=${environment.apiKey}`, user)
+   return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
      .pipe(
        tap(this.setToken)
      )
@@ -29,7 +29,7 @@ export class AuthService {
     return !!this.token
   }
 
-  private setToken(response: FbAuthResponse) {
+  private setToken(response: any) {
     console.log(response);
   }
 }
