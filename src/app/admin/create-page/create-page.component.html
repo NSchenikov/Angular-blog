@@ -1,1 +1,47 @@
-<p>create-page works!</p>
+<form [formGroup]="form" (ngSubmit)="sumbit()">
+  <h1>Create new post</h1>
+
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('title')?.touched && form.get('title')?.invalid}"
+  >
+    <label for="title">Post title:</label>
+    <input id="title" type="text" formControlName="title">
+    <div
+      *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('title').errors?.required">
+        Type post title
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Post content:</label>
+
+  </div>
+
+
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('author')?.touched && form.get('authoe')?.invalid}"
+  >
+    <label for="author">Post author:</label>
+    <input id="author" type="text" formControlName="author">
+    <div
+      *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('author').errors?.required">
+        Type post author
+      </small>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-block btn-dark"
+    [disabled]="form.invalid"
+  >Create post</button>
+</form>
