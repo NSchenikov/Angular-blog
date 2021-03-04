@@ -14,7 +14,7 @@ export class PostsService {
       .pipe(map((response: FbCreateResponse) => {
         return {
           ...post,
-          id: response.name,
+          // id: response.name,
           date: new Date(post.date)
         }
       }))
@@ -30,6 +30,16 @@ export class PostsService {
             id: key,
             date: new Date(response[key].date)
           }))
+      }))
+  }
+
+  getById(id: string): Observable<Post> {
+    return this.http.get<Post>(`${environment.FbDbUrl}/posts/${id}.json`)
+      .pipe(map((post: Post) => {
+        return {
+          ...post, id,
+          date: new Date(post.date)
+        }
       }))
   }
 
